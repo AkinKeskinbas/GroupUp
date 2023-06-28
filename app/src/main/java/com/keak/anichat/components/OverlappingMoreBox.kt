@@ -18,12 +18,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun OverlappingMoreBox(morePeopleCount:Int) {
+fun OverlappingMoreBox(morePeopleCount:Int, imageSize:Int=30, fontSize:Int=14) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .width(30.dp)
-            .height(30.dp)
+            .width(imageSize.dp)
+            .height(imageSize.dp)
             .border(width = 1.dp, color = Color.Black, shape = CircleShape)
             .clip(CircleShape)
             .background(Color.White),
@@ -31,7 +31,7 @@ fun OverlappingMoreBox(morePeopleCount:Int) {
         ) {
         Text(
             text = "$morePeopleCount+",
-            fontSize = 14.sp,
+            fontSize = fontSize.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black,
             textAlign = TextAlign.Center,

@@ -2,13 +2,10 @@ package com.keak.anichat.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -16,7 +13,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,7 +25,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
@@ -42,12 +37,13 @@ fun GroupCard(
     title: String,
     userName: String,
     userPhoto: String,
-    participantsPhotoList: List<String>
+    participantsPhotoList: List<String>,
+    clickAction:()->Unit
 ) {
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val screenHeight = LocalConfiguration.current.screenHeightDp
     Card(
-        onClick = { /*TODO*/ },
+        onClick = { clickAction.invoke() },
         modifier = Modifier
             .width((screenWidth / 2).dp)
             .height((screenHeight / 6).dp),
@@ -62,12 +58,11 @@ fun GroupCard(
             val (titleText, userNameText, userPhotoRef, participantsRef) = createRefs()
             OverlappingRow(modifier = Modifier.constrainAs(participantsRef) {
                 top.linkTo(parent.top)
-                bottom.linkTo(userNameText.top)
                 start.linkTo(parent.start)
             }) {
-                participantsPhotoList.take(9).forEachIndexed { index, photoLink ->
+                participantsPhotoList.take(9).forEach { photoLink ->
                     AsyncImage(
-                        model = R.mipmap.ic_launcher,
+                        model = photoLink,
                         contentDescription = null,
                         modifier = Modifier
                             .clip(CircleShape)
@@ -92,7 +87,7 @@ fun GroupCard(
                     start.linkTo(parent.start)
                 })
             AsyncImage(
-                model = R.mipmap.ic_launcher,
+                model = userPhoto,
                 contentDescription = null,
                 modifier = Modifier
                     .clip(CircleShape)
@@ -140,5 +135,5 @@ fun GroupCardPreview() {
         userName = "WanHeda",
         userPhoto = "",
         participantsPhotoList = listOf("", "", "", "", "", "", "", "", "", "", "", "")
-    )
+    ){}
 }
