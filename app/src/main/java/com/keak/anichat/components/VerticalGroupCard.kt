@@ -34,6 +34,7 @@ import com.animeson.anichat.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun VerticalGroupCard(
+    modifier: Modifier,
     bgColor: Color,
     title: String,
     userName: String,
@@ -45,8 +46,8 @@ fun VerticalGroupCard(
     val screenHeight = LocalConfiguration.current.screenHeightDp
     Card(
         onClick = { clickAction.invoke() },
-        modifier = Modifier
-            .width((screenWidth / 2).dp)
+        modifier = modifier
+            .width((screenWidth / 1.5).dp)
             .height((screenHeight / 2.5).dp),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = bgColor),
@@ -72,7 +73,7 @@ fun VerticalGroupCard(
                 }) {
                     participantsPhotoList.take(9).forEachIndexed { index, photoLink ->
                         AsyncImage(
-                            model = R.mipmap.ic_launcher,
+                            model = photoLink,
                             contentDescription = null,
                             modifier = Modifier
                                 .clip(CircleShape)
@@ -132,6 +133,7 @@ fun VerticalGroupCard(
 @Composable
 fun VerticalGroupCardPreview() {
     VerticalGroupCard(
+        modifier = Modifier,
         bgColor = Color.Red,
         title = "PetsPetsPetsets",
         userName = "WanHeda",
