@@ -29,10 +29,14 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import com.animeson.anichat.R
+import com.google.gson.Gson
+import com.keak.anichat.data.HomeResponse
+import com.keak.anichat.util.Misc.dummy
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GroupCard(
+    modifier: Modifier,
     bgColor: Color,
     title: String,
     userName: String,
@@ -40,12 +44,13 @@ fun GroupCard(
     participantsPhotoList: List<String>,
     clickAction:()->Unit
 ) {
+
     val screenWidth = LocalConfiguration.current.screenWidthDp
     val screenHeight = LocalConfiguration.current.screenHeightDp
     Card(
         onClick = { clickAction.invoke() },
-        modifier = Modifier
-            .width((screenWidth / 2).dp)
+        modifier = modifier
+            .width((screenWidth / 1.5).dp)
             .height((screenHeight / 6).dp),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = bgColor)
@@ -60,7 +65,7 @@ fun GroupCard(
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
             }) {
-                participantsPhotoList.take(9).forEach { photoLink ->
+                participantsPhotoList.take(7).forEach { photoLink ->
                     AsyncImage(
                         model = photoLink,
                         contentDescription = null,
@@ -71,7 +76,7 @@ fun GroupCard(
                         contentScale = ContentScale.Crop
                     )
                 }
-                if (participantsPhotoList.size > 9) {
+                if (participantsPhotoList.size > 7) {
                     val maxParticipantsSize = 99
                     val realSize = participantsPhotoList.size
                     OverlappingMoreBox(if (realSize >= maxParticipantsSize) maxParticipantsSize else realSize)
@@ -113,7 +118,7 @@ fun GroupCard(
             }
             Text(
                 text = annotatedString,
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.titleSmall,
                 color = Color.White,
                 modifier = Modifier.constrainAs(titleText) {
                     bottom.linkTo(parent.bottom)
@@ -129,7 +134,9 @@ fun GroupCard(
 @Preview(showBackground = false)
 @Composable
 fun GroupCardPreview() {
+
     GroupCard(
+        modifier = Modifier,
         bgColor = Color.Red,
         title = "PetsPetsPets",
         userName = "WanHeda",
