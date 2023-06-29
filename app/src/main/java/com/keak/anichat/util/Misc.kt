@@ -1,7 +1,7 @@
 package com.keak.anichat.util
 
 object Misc {
-  val dummy =  """{
+    val dummy = """{
         "rooms": [
         {
             "title": "Pets",
@@ -38,7 +38,7 @@ object Misc {
             "isOwner": true,
             "roomId": "123",
             "ownerImage": "https://i.pinimg.com/564x/bd/9e/9f/bd9e9f0fdd1d72a88a11c70460b53f43.jpg",
-            "ownerName": "WanHeda",
+            "ownerName": "WanHedaWanHedaWanHeda",
             "boosted": false,
             "isSpecialChatRoom": true,
             "isLimitedRoom": false,
@@ -289,5 +289,37 @@ object Misc {
         }
         ]
     }"""
+    val populerPeopleDummy = """{
+    "popularPeopleList":[
+    {
+    "userName":"WanHedaHedaHeda",
+    "userPhoto":"https://i.pinimg.com/564x/bd/9e/9f/bd9e9f0fdd1d72a88a11c70460b53f43.jpg"
+    },
+     {
+    "userName":"Heda",
+    "userPhoto":"https://i.pinimg.com/564x/bd/9e/9f/bd9e9f0fdd1d72a88a11c70460b53f43.jpg"
+    },
+     {
+    "userName":"Heda",
+    "userPhoto":"https://i.pinimg.com/564x/bd/9e/9f/bd9e9f0fdd1d72a88a11c70460b53f43.jpg"
+    },
+     {
+    "userName":"Heda",
+    "userPhoto":"https://i.pinimg.com/564x/bd/9e/9f/bd9e9f0fdd1d72a88a11c70460b53f43.jpg"
+    },
+     {
+    "userName":"Heda",
+    "userPhoto":"https://i.pinimg.com/564x/bd/9e/9f/bd9e9f0fdd1d72a88a11c70460b53f43.jpg"
+    },
+     {
+    "userName":"Heda",
+    "userPhoto":"https://i.pinimg.com/564x/bd/9e/9f/bd9e9f0fdd1d72a88a11c70460b53f43.jpg"
+    },
+     {
+    "userName":"Heda",
+    "userPhoto":"https://i.pinimg.com/564x/bd/9e/9f/bd9e9f0fdd1d72a88a11c70460b53f43.jpg"
+    }
+    ]
+    } """
 
 }

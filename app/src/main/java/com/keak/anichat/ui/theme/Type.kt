@@ -48,6 +48,12 @@ val Typography = Typography(
         fontSize = 12.sp,
         lineHeight = 25.sp
     ),
+    labelSmall = TextStyle(
+        fontFamily = Rubic,
+        fontWeight = FontWeight.Normal,
+        fontSize = 9.sp,
+        lineHeight = 20.sp
+    ),
     titleSmall = TextStyle(
         fontFamily = Rubic,
         fontWeight = FontWeight.SemiBold,

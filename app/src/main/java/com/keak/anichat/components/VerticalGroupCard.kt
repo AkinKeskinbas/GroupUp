@@ -94,26 +94,16 @@ fun VerticalGroupCard(
                 }
 
                 Text(
-                    text = userName,
+                    text = userName.limitText(),
                     style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Light),
                     color = Color.White,
                     modifier = Modifier.constrainAs(userNameText) {
                         bottom.linkTo(titleText.top, margin = 8.dp)
                         start.linkTo(parent.start)
                     })
-                val maxLength = 12
-                val annotatedString = buildAnnotatedString {
-                    if (title.length > maxLength) {
-                        withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                            append(title.substring(0, maxLength))
-                        }
-                        append("...")
-                    } else {
-                        append(title)
-                    }
-                }
+
                 Text(
-                    text = annotatedString,
+                    text = title.limitText(12),
                     style = MaterialTheme.typography.titleLarge,
                     color = Color.White,
                     modifier = Modifier.constrainAs(titleText) {

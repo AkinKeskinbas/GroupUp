@@ -105,19 +105,9 @@ fun GroupCard(
                     },
                 contentScale = ContentScale.Crop
             )
-            val maxLength = 9
-            val annotatedString = buildAnnotatedString {
-                if (title.length > maxLength) {
-                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
-                        append(title.substring(0, maxLength))
-                    }
-                    append("...")
-                } else {
-                    append(title)
-                }
-            }
+
             Text(
-                text = annotatedString,
+                text = title.limitText(),
                 style = MaterialTheme.typography.titleSmall,
                 color = Color.White,
                 modifier = Modifier.constrainAs(titleText) {
