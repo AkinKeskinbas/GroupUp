@@ -12,9 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.keak.anichat.ui.theme.AniChatTheme
 import com.keak.geniusai.navigation.AniChatNavGraph
 import com.keak.geniusai.navigation.Router
@@ -32,6 +34,9 @@ class MainActivity : ComponentActivity() {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val route = navBackStackEntry?.destination?.route ?: Screens.Splash.route
             val router: Router = remember { RouterImpl(navController, route) }
+            val systemUiController  = rememberSystemUiController()
+            systemUiController.setSystemBarsColor(color = MaterialTheme.colorScheme.background)
+
             AniChatTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(

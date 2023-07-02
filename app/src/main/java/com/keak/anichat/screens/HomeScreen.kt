@@ -13,12 +13,18 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.animeson.anichat.R
 import com.google.gson.Gson
 import com.keak.anichat.components.GroupCard
 import com.keak.anichat.components.PopularPeopleCircle
@@ -56,10 +62,15 @@ fun HomeScreen(router: Router) {
         }.orEmpty()
     }.orEmpty().flatten()
     val screenWidth = LocalConfiguration.current.screenWidthDp
-
+    var cardColor by remember { mutableStateOf(Color.Transparent) }
 
     Column(modifier = Modifier.padding(8.dp)) {
-        Text(text = "Popular", style = MaterialTheme.typography.titleLarge, color = Color.Black)
+        Text(
+            text = stringResource(R.string.popular),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.secondary
+        )
+        Spacer(modifier = Modifier.height(16.dp))
         LazyRow() {
             items(popularPeopleResponse.popularPeopleList.orEmpty()) { people ->
                 PopularPeopleCircle(
@@ -71,7 +82,11 @@ fun HomeScreen(router: Router) {
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Rooms", style = MaterialTheme.typography.titleLarge, color = Color.Black)
+        Text(
+            text = stringResource(R.string.rooms),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.secondary
+        )
         Spacer(modifier = Modifier.height(16.dp))
         LazyVerticalStaggeredGrid(
             columns = StaggeredGridCells.Adaptive((screenWidth / 2.7).dp),

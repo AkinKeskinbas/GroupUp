@@ -42,7 +42,8 @@ fun PopularPeopleCircle(imageLink: String, userName: String, modifier: Modifier)
             modifier = Modifier.width(50.dp),
             textAlign = TextAlign.Center,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Ellipsis,
+            color = MaterialTheme.colorScheme.onBackground
         )
     }
 }

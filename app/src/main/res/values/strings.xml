@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AniChat</string>
+    <string name="popular">Popular</string>
+    <string name="rooms">Rooms</string>
 </resources>
